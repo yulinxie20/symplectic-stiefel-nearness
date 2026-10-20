@@ -42,7 +42,7 @@ J_{2r}=
 | GPU | NVIDIA GeForce RTX 3060 Laptop GPU，6 GiB |
 | NVIDIA 驱动 | 592.82 |
 
-本项目的 CuPy 依赖面向 CUDA 12.x；运行时还需要可访问的 NVRTC 和 CUDA 头文件。请先准备兼容的 CUDA Toolkit（本机使用 12.6）；自定义安装位置可通过 `CUDA_PATH` 指定，参见 [CuPy 安装说明](https://docs.cupy.dev/en/v13.6.0/install.html)。环境中只安装一个 CuPy 分发包。
+本项目的 CuPy 依赖面向 CUDA 12.x；运行时还需要可访问的 NVRTC 和 CUDA 头文件。请先准备兼容的 CUDA 12.x 工具链；自定义安装位置可通过 `CUDA_PATH` 指定，参见 [CuPy 安装说明](https://docs.cupy.dev/en/v13.6.0/install.html)。上表记录的是 PyTorch 的 CUDA 版本，不代表所有本地 CUDA 组件的版本。环境中只安装一个 CuPy 分发包。
 
 在独立的 Python 环境中，先安装与驱动兼容的 CUDA 版 PyTorch，再从仓库根目录安装本项目。例如，使用 CUDA 12.6 版 PyTorch：
 

@@ -3,3 +3,5 @@
 *.cu text eol=lf
 *.md text eol=lf
 *.toml text eol=lf
+# 原始记录及其散列清单按字节归档，不进行 Git 行尾转换。
+paper_results/** -text whitespace=cr-at-eol

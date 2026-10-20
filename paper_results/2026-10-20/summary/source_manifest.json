@@ -1,0 +1,398 @@
+{
+  "normalization": "CRLF bytes replaced by LF bytes; all other bytes retained",
+  "git_attributes_file": ".gitattributes",
+  "note": "Runtime hashes identify actual working-copy bytes. Git's LF normalization can give a different hash for a CRLF working copy without changing source text. A raw-hash mismatch is accepted only when the specified source-root manifest matches the config's original raw hash and the current LF-normalized hash. Original hashes and newline counts are retained; current bytes are recorded separately. summarize_paper.py was not executed by the GPU benchmark and is excluded.",
+  "files": [
+    {
+      "path": "benchmarks/paper_cases.py",
+      "sha256": "fa32bd9c8c6561c7ce156d6b02411f9315b90932e27a9a58dedcfd34194cd3d2",
+      "normalized_lf_sha256": "fa32bd9c8c6561c7ce156d6b02411f9315b90932e27a9a58dedcfd34194cd3d2",
+      "runtime_sha256": {
+        "scaling": "fa32bd9c8c6561c7ce156d6b02411f9315b90932e27a9a58dedcfd34194cd3d2",
+        "critical": "fa32bd9c8c6561c7ce156d6b02411f9315b90932e27a9a58dedcfd34194cd3d2",
+        "boundary": "fa32bd9c8c6561c7ce156d6b02411f9315b90932e27a9a58dedcfd34194cd3d2",
+        "batch": "fa32bd9c8c6561c7ce156d6b02411f9315b90932e27a9a58dedcfd34194cd3d2"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 170,
+      "line_count": 170,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "fa32bd9c8c6561c7ce156d6b02411f9315b90932e27a9a58dedcfd34194cd3d2",
+        "normalized_lf_sha256": "fa32bd9c8c6561c7ce156d6b02411f9315b90932e27a9a58dedcfd34194cd3d2",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 170,
+        "line_count": 170
+      }
+    },
+    {
+      "path": "benchmarks/run_benchmark.py",
+      "sha256": "d4bd004e61858c8d067a39112aff16e4afad4ee5c413419ce2d4ff73cda0987e",
+      "normalized_lf_sha256": "d4bd004e61858c8d067a39112aff16e4afad4ee5c413419ce2d4ff73cda0987e",
+      "runtime_sha256": {
+        "scaling": "d4bd004e61858c8d067a39112aff16e4afad4ee5c413419ce2d4ff73cda0987e",
+        "critical": "d4bd004e61858c8d067a39112aff16e4afad4ee5c413419ce2d4ff73cda0987e",
+        "boundary": "d4bd004e61858c8d067a39112aff16e4afad4ee5c413419ce2d4ff73cda0987e",
+        "batch": "d4bd004e61858c8d067a39112aff16e4afad4ee5c413419ce2d4ff73cda0987e"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 218,
+      "line_count": 218,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "d4bd004e61858c8d067a39112aff16e4afad4ee5c413419ce2d4ff73cda0987e",
+        "normalized_lf_sha256": "d4bd004e61858c8d067a39112aff16e4afad4ee5c413419ce2d4ff73cda0987e",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 218,
+        "line_count": 218
+      }
+    },
+    {
+      "path": "benchmarks/run_paper.py",
+      "sha256": "56c716a91499df8ebe88ba34fe0ac04278b5bd12d8ca8c40d494178298b089e8",
+      "normalized_lf_sha256": "56c716a91499df8ebe88ba34fe0ac04278b5bd12d8ca8c40d494178298b089e8",
+      "runtime_sha256": {
+        "scaling": "56c716a91499df8ebe88ba34fe0ac04278b5bd12d8ca8c40d494178298b089e8",
+        "critical": "56c716a91499df8ebe88ba34fe0ac04278b5bd12d8ca8c40d494178298b089e8",
+        "boundary": "56c716a91499df8ebe88ba34fe0ac04278b5bd12d8ca8c40d494178298b089e8",
+        "batch": "56c716a91499df8ebe88ba34fe0ac04278b5bd12d8ca8c40d494178298b089e8"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 205,
+      "line_count": 205,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "56c716a91499df8ebe88ba34fe0ac04278b5bd12d8ca8c40d494178298b089e8",
+        "normalized_lf_sha256": "56c716a91499df8ebe88ba34fe0ac04278b5bd12d8ca8c40d494178298b089e8",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 205,
+        "line_count": 205
+      }
+    },
+    {
+      "path": "src/symplectic_projection/__init__.py",
+      "sha256": "22a2e26cc5d61cab91c991cff27d18ca941efa02bdbed23bfee262686b19037f",
+      "normalized_lf_sha256": "22a2e26cc5d61cab91c991cff27d18ca941efa02bdbed23bfee262686b19037f",
+      "runtime_sha256": {
+        "scaling": "22a2e26cc5d61cab91c991cff27d18ca941efa02bdbed23bfee262686b19037f",
+        "critical": "22a2e26cc5d61cab91c991cff27d18ca941efa02bdbed23bfee262686b19037f",
+        "boundary": "22a2e26cc5d61cab91c991cff27d18ca941efa02bdbed23bfee262686b19037f",
+        "batch": "22a2e26cc5d61cab91c991cff27d18ca941efa02bdbed23bfee262686b19037f"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 4,
+      "line_count": 4,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "22a2e26cc5d61cab91c991cff27d18ca941efa02bdbed23bfee262686b19037f",
+        "normalized_lf_sha256": "22a2e26cc5d61cab91c991cff27d18ca941efa02bdbed23bfee262686b19037f",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 4,
+        "line_count": 4
+      }
+    },
+    {
+      "path": "src/symplectic_projection/baselines/__init__.py",
+      "sha256": "1a98251b735b543151d5d5f850be011a4107892c03d7b1ec27cecc63cffc0ef8",
+      "normalized_lf_sha256": "1a98251b735b543151d5d5f850be011a4107892c03d7b1ec27cecc63cffc0ef8",
+      "runtime_sha256": {
+        "scaling": "1a98251b735b543151d5d5f850be011a4107892c03d7b1ec27cecc63cffc0ef8",
+        "critical": "1a98251b735b543151d5d5f850be011a4107892c03d7b1ec27cecc63cffc0ef8",
+        "boundary": "1a98251b735b543151d5d5f850be011a4107892c03d7b1ec27cecc63cffc0ef8",
+        "batch": "1a98251b735b543151d5d5f850be011a4107892c03d7b1ec27cecc63cffc0ef8"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 5,
+      "line_count": 5,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "1a98251b735b543151d5d5f850be011a4107892c03d7b1ec27cecc63cffc0ef8",
+        "normalized_lf_sha256": "1a98251b735b543151d5d5f850be011a4107892c03d7b1ec27cecc63cffc0ef8",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 5,
+        "line_count": 5
+      }
+    },
+    {
+      "path": "src/symplectic_projection/baselines/common.py",
+      "sha256": "2a1ed5800df4a9f0886ed6daba2ae4b064ad17811aedcf6187f040636344a642",
+      "normalized_lf_sha256": "2a1ed5800df4a9f0886ed6daba2ae4b064ad17811aedcf6187f040636344a642",
+      "runtime_sha256": {
+        "scaling": "2a1ed5800df4a9f0886ed6daba2ae4b064ad17811aedcf6187f040636344a642",
+        "critical": "2a1ed5800df4a9f0886ed6daba2ae4b064ad17811aedcf6187f040636344a642",
+        "boundary": "2a1ed5800df4a9f0886ed6daba2ae4b064ad17811aedcf6187f040636344a642",
+        "batch": "2a1ed5800df4a9f0886ed6daba2ae4b064ad17811aedcf6187f040636344a642"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 91,
+      "line_count": 91,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "2a1ed5800df4a9f0886ed6daba2ae4b064ad17811aedcf6187f040636344a642",
+        "normalized_lf_sha256": "2a1ed5800df4a9f0886ed6daba2ae4b064ad17811aedcf6187f040636344a642",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 91,
+        "line_count": 91
+      }
+    },
+    {
+      "path": "src/symplectic_projection/baselines/geometry.py",
+      "sha256": "ea4db892481e5afa7a91b078de34b70b8bae326b1df08476084e1c7294a71da4",
+      "normalized_lf_sha256": "ea4db892481e5afa7a91b078de34b70b8bae326b1df08476084e1c7294a71da4",
+      "runtime_sha256": {
+        "scaling": "ea4db892481e5afa7a91b078de34b70b8bae326b1df08476084e1c7294a71da4",
+        "critical": "ea4db892481e5afa7a91b078de34b70b8bae326b1df08476084e1c7294a71da4",
+        "boundary": "ea4db892481e5afa7a91b078de34b70b8bae326b1df08476084e1c7294a71da4",
+        "batch": "ea4db892481e5afa7a91b078de34b70b8bae326b1df08476084e1c7294a71da4"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 86,
+      "line_count": 86,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "ea4db892481e5afa7a91b078de34b70b8bae326b1df08476084e1c7294a71da4",
+        "normalized_lf_sha256": "ea4db892481e5afa7a91b078de34b70b8bae326b1df08476084e1c7294a71da4",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 86,
+        "line_count": 86
+      }
+    },
+    {
+      "path": "src/symplectic_projection/baselines/riemannian.py",
+      "sha256": "515d3ff08d0f673bfd9efacedaf7fe3925585ebd5366a18ae1083a129a790cf5",
+      "normalized_lf_sha256": "515d3ff08d0f673bfd9efacedaf7fe3925585ebd5366a18ae1083a129a790cf5",
+      "runtime_sha256": {
+        "scaling": "515d3ff08d0f673bfd9efacedaf7fe3925585ebd5366a18ae1083a129a790cf5",
+        "critical": "515d3ff08d0f673bfd9efacedaf7fe3925585ebd5366a18ae1083a129a790cf5",
+        "boundary": "515d3ff08d0f673bfd9efacedaf7fe3925585ebd5366a18ae1083a129a790cf5",
+        "batch": "515d3ff08d0f673bfd9efacedaf7fe3925585ebd5366a18ae1083a129a790cf5"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 301,
+      "line_count": 301,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "515d3ff08d0f673bfd9efacedaf7fe3925585ebd5366a18ae1083a129a790cf5",
+        "normalized_lf_sha256": "515d3ff08d0f673bfd9efacedaf7fe3925585ebd5366a18ae1083a129a790cf5",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 301,
+        "line_count": 301
+      }
+    },
+    {
+      "path": "src/symplectic_projection/cholesky_inverse_kernel.py",
+      "sha256": "17a0e9b20bafc4dfe35321bd10a83205deb82309a1388792fc829d027649643b",
+      "normalized_lf_sha256": "17a0e9b20bafc4dfe35321bd10a83205deb82309a1388792fc829d027649643b",
+      "runtime_sha256": {
+        "scaling": "17a0e9b20bafc4dfe35321bd10a83205deb82309a1388792fc829d027649643b",
+        "critical": "17a0e9b20bafc4dfe35321bd10a83205deb82309a1388792fc829d027649643b",
+        "boundary": "17a0e9b20bafc4dfe35321bd10a83205deb82309a1388792fc829d027649643b",
+        "batch": "17a0e9b20bafc4dfe35321bd10a83205deb82309a1388792fc829d027649643b"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 146,
+      "line_count": 146,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "17a0e9b20bafc4dfe35321bd10a83205deb82309a1388792fc829d027649643b",
+        "normalized_lf_sha256": "17a0e9b20bafc4dfe35321bd10a83205deb82309a1388792fc829d027649643b",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 146,
+        "line_count": 146
+      }
+    },
+    {
+      "path": "src/symplectic_projection/cuda_kernels.py",
+      "sha256": "05f08eb80e67d95cfbc4c1a43f348a871e255bdf3175d534ca8b6dae99bff682",
+      "normalized_lf_sha256": "05f08eb80e67d95cfbc4c1a43f348a871e255bdf3175d534ca8b6dae99bff682",
+      "runtime_sha256": {
+        "scaling": "05f08eb80e67d95cfbc4c1a43f348a871e255bdf3175d534ca8b6dae99bff682",
+        "critical": "05f08eb80e67d95cfbc4c1a43f348a871e255bdf3175d534ca8b6dae99bff682",
+        "boundary": "05f08eb80e67d95cfbc4c1a43f348a871e255bdf3175d534ca8b6dae99bff682",
+        "batch": "05f08eb80e67d95cfbc4c1a43f348a871e255bdf3175d534ca8b6dae99bff682"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 53,
+      "line_count": 53,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "05f08eb80e67d95cfbc4c1a43f348a871e255bdf3175d534ca8b6dae99bff682",
+        "normalized_lf_sha256": "05f08eb80e67d95cfbc4c1a43f348a871e255bdf3175d534ca8b6dae99bff682",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 53,
+        "line_count": 53
+      }
+    },
+    {
+      "path": "src/symplectic_projection/dual_recommended_hvp.py",
+      "sha256": "3fcd2b1cfb1c3254945c2c1ea8c9740cc612d3b8bbe8236dab9d6dcca6c0614e",
+      "normalized_lf_sha256": "5e457053c69824ed81425b6a49833f7c96f318d96568cf80fc8e5fd4d396ad83",
+      "runtime_sha256": {
+        "scaling": "3fcd2b1cfb1c3254945c2c1ea8c9740cc612d3b8bbe8236dab9d6dcca6c0614e",
+        "critical": "3fcd2b1cfb1c3254945c2c1ea8c9740cc612d3b8bbe8236dab9d6dcca6c0614e",
+        "boundary": "3fcd2b1cfb1c3254945c2c1ea8c9740cc612d3b8bbe8236dab9d6dcca6c0614e",
+        "batch": "3fcd2b1cfb1c3254945c2c1ea8c9740cc612d3b8bbe8236dab9d6dcca6c0614e"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 239,
+      "lf_only_newlines": 0,
+      "line_count": 239,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "3fcd2b1cfb1c3254945c2c1ea8c9740cc612d3b8bbe8236dab9d6dcca6c0614e",
+        "normalized_lf_sha256": "5e457053c69824ed81425b6a49833f7c96f318d96568cf80fc8e5fd4d396ad83",
+        "crlf_newlines": 239,
+        "lf_only_newlines": 0,
+        "line_count": 239
+      }
+    },
+    {
+      "path": "src/symplectic_projection/gram_triangle_reflect.cu",
+      "sha256": "0779f78b2189d61740368eba1088c10ce3320f4be617b1de4c933bdf27a67449",
+      "normalized_lf_sha256": "0779f78b2189d61740368eba1088c10ce3320f4be617b1de4c933bdf27a67449",
+      "runtime_sha256": {
+        "scaling": "0779f78b2189d61740368eba1088c10ce3320f4be617b1de4c933bdf27a67449",
+        "critical": "0779f78b2189d61740368eba1088c10ce3320f4be617b1de4c933bdf27a67449",
+        "boundary": "0779f78b2189d61740368eba1088c10ce3320f4be617b1de4c933bdf27a67449",
+        "batch": "0779f78b2189d61740368eba1088c10ce3320f4be617b1de4c933bdf27a67449"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 104,
+      "line_count": 104,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "0779f78b2189d61740368eba1088c10ce3320f4be617b1de4c933bdf27a67449",
+        "normalized_lf_sha256": "0779f78b2189d61740368eba1088c10ce3320f4be617b1de4c933bdf27a67449",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 104,
+        "line_count": 104
+      }
+    },
+    {
+      "path": "src/symplectic_projection/gram_triangle_reflect.py",
+      "sha256": "755154008add1dcefc4fd6164fe71ae5493d232d93de48979bcc1c10772d6b21",
+      "normalized_lf_sha256": "755154008add1dcefc4fd6164fe71ae5493d232d93de48979bcc1c10772d6b21",
+      "runtime_sha256": {
+        "scaling": "755154008add1dcefc4fd6164fe71ae5493d232d93de48979bcc1c10772d6b21",
+        "critical": "755154008add1dcefc4fd6164fe71ae5493d232d93de48979bcc1c10772d6b21",
+        "boundary": "755154008add1dcefc4fd6164fe71ae5493d232d93de48979bcc1c10772d6b21",
+        "batch": "755154008add1dcefc4fd6164fe71ae5493d232d93de48979bcc1c10772d6b21"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 34,
+      "line_count": 34,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "755154008add1dcefc4fd6164fe71ae5493d232d93de48979bcc1c10772d6b21",
+        "normalized_lf_sha256": "755154008add1dcefc4fd6164fe71ae5493d232d93de48979bcc1c10772d6b21",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 34,
+        "line_count": 34
+      }
+    },
+    {
+      "path": "src/symplectic_projection/hvp_fused.cu",
+      "sha256": "1a396825741c0931137d86c0d66384dc74942f03dfe07aa4fc7cd41fe12a006b",
+      "normalized_lf_sha256": "1a396825741c0931137d86c0d66384dc74942f03dfe07aa4fc7cd41fe12a006b",
+      "runtime_sha256": {
+        "scaling": "1a396825741c0931137d86c0d66384dc74942f03dfe07aa4fc7cd41fe12a006b",
+        "critical": "1a396825741c0931137d86c0d66384dc74942f03dfe07aa4fc7cd41fe12a006b",
+        "boundary": "1a396825741c0931137d86c0d66384dc74942f03dfe07aa4fc7cd41fe12a006b",
+        "batch": "1a396825741c0931137d86c0d66384dc74942f03dfe07aa4fc7cd41fe12a006b"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 423,
+      "line_count": 423,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "1a396825741c0931137d86c0d66384dc74942f03dfe07aa4fc7cd41fe12a006b",
+        "normalized_lf_sha256": "1a396825741c0931137d86c0d66384dc74942f03dfe07aa4fc7cd41fe12a006b",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 423,
+        "line_count": 423
+      }
+    },
+    {
+      "path": "src/symplectic_projection/hvp_fused.py",
+      "sha256": "20d3f80f680d444d9c4be727e2f8ea7b982dcf5e13691882401612ce82197acd",
+      "normalized_lf_sha256": "20d3f80f680d444d9c4be727e2f8ea7b982dcf5e13691882401612ce82197acd",
+      "runtime_sha256": {
+        "scaling": "20d3f80f680d444d9c4be727e2f8ea7b982dcf5e13691882401612ce82197acd",
+        "critical": "20d3f80f680d444d9c4be727e2f8ea7b982dcf5e13691882401612ce82197acd",
+        "boundary": "20d3f80f680d444d9c4be727e2f8ea7b982dcf5e13691882401612ce82197acd",
+        "batch": "20d3f80f680d444d9c4be727e2f8ea7b982dcf5e13691882401612ce82197acd"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 144,
+      "line_count": 144,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "20d3f80f680d444d9c4be727e2f8ea7b982dcf5e13691882401612ce82197acd",
+        "normalized_lf_sha256": "20d3f80f680d444d9c4be727e2f8ea7b982dcf5e13691882401612ce82197acd",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 144,
+        "line_count": 144
+      }
+    },
+    {
+      "path": "src/symplectic_projection/recovery_fused.cu",
+      "sha256": "123e216e4e69989d1b44778ed8894137b15780a02f620a484fe9dc0cc03e2bd6",
+      "normalized_lf_sha256": "123e216e4e69989d1b44778ed8894137b15780a02f620a484fe9dc0cc03e2bd6",
+      "runtime_sha256": {
+        "scaling": "123e216e4e69989d1b44778ed8894137b15780a02f620a484fe9dc0cc03e2bd6",
+        "critical": "123e216e4e69989d1b44778ed8894137b15780a02f620a484fe9dc0cc03e2bd6",
+        "boundary": "123e216e4e69989d1b44778ed8894137b15780a02f620a484fe9dc0cc03e2bd6",
+        "batch": "123e216e4e69989d1b44778ed8894137b15780a02f620a484fe9dc0cc03e2bd6"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 41,
+      "line_count": 41,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "123e216e4e69989d1b44778ed8894137b15780a02f620a484fe9dc0cc03e2bd6",
+        "normalized_lf_sha256": "123e216e4e69989d1b44778ed8894137b15780a02f620a484fe9dc0cc03e2bd6",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 41,
+        "line_count": 41
+      }
+    },
+    {
+      "path": "src/symplectic_projection/recovery_fused.py",
+      "sha256": "443891db84ab553fe35ec1f9b47ecba810aae49eacc22d517f1b761f7b099b84",
+      "normalized_lf_sha256": "443891db84ab553fe35ec1f9b47ecba810aae49eacc22d517f1b761f7b099b84",
+      "runtime_sha256": {
+        "scaling": "443891db84ab553fe35ec1f9b47ecba810aae49eacc22d517f1b761f7b099b84",
+        "critical": "443891db84ab553fe35ec1f9b47ecba810aae49eacc22d517f1b761f7b099b84",
+        "boundary": "443891db84ab553fe35ec1f9b47ecba810aae49eacc22d517f1b761f7b099b84",
+        "batch": "443891db84ab553fe35ec1f9b47ecba810aae49eacc22d517f1b761f7b099b84"
+      },
+      "runtime_hash_matches_current": true,
+      "crlf_newlines": 0,
+      "lf_only_newlines": 43,
+      "line_count": 43,
+      "validation": "raw_sha256",
+      "current_working_copy": {
+        "sha256": "443891db84ab553fe35ec1f9b47ecba810aae49eacc22d517f1b761f7b099b84",
+        "normalized_lf_sha256": "443891db84ab553fe35ec1f9b47ecba810aae49eacc22d517f1b761f7b099b84",
+        "crlf_newlines": 0,
+        "lf_only_newlines": 43,
+        "line_count": 43
+      }
+    }
+  ]
+}

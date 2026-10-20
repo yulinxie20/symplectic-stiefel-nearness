@@ -89,7 +89,7 @@ def residuals(torch, T, output):
         JX = torch.cat((X[b, rows // 2:], -X[b, :rows // 2]), dim=0)
         feasibility.append(float(torch.linalg.vector_norm(X[b].T @ JX - Jm) / math.sqrt(m)))
         error = X[b] - T[b]
-        objective.append(float(0.5 * torch.sum(error * error)))
+        objective.append(float(torch.sum(error * error)))
         error.addmm_(JX, omega[b], beta=1, alpha=-1)
         stationarity.append(float(torch.linalg.vector_norm(error) /
                                   torch.linalg.vector_norm(T[b]).clamp_min(1)))
@@ -111,7 +111,7 @@ def residuals(torch, T, output):
         "definitions": {
             "constraint": "||Xᵀ J₂ₙ X − J₂ₖ||F / sqrt(2k)",
             "stationarity": "||X − T − J₂ₙ X omega||F / max(||T||F, 1)",
-            "objective": "0.5 ||X − T||F²",
+            "objective": "||X − T||F²",
         },
         "note": "指标在最后一次计时输出上逐题计算，不计入墙钟样本。",
     }

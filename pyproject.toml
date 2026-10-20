@@ -8,11 +8,19 @@ version = "0.1.0"
 description = "Batched FP64 GPU solver for the nearest real symplectic Stiefel matrix problem"
 readme = "README.md"
 requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [{name = "YulinXie"}]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+]
 dependencies = [
     "numpy>=1.26,<3",
     "torch>=2.5",
     "cupy-cuda12x==13.6.0",
 ]
+
+[project.urls]
+Repository = "https://github.com/yulinxie20/symplectic-stiefel-nearness"
 
 [tool.setuptools.packages.find]
 where = ["src"]

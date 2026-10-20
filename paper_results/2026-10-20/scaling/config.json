@@ -1,0 +1,120 @@
+{
+  "suite": "scaling",
+  "cases": [
+    {
+      "name": "n256_k8",
+      "family": "gaussian",
+      "n": 256,
+      "k": 8
+    },
+    {
+      "name": "n1024_k8",
+      "family": "gaussian",
+      "n": 1024,
+      "k": 8
+    },
+    {
+      "name": "n4096_k8",
+      "family": "gaussian",
+      "n": 4096,
+      "k": 8
+    },
+    {
+      "name": "n256_k32",
+      "family": "gaussian",
+      "n": 256,
+      "k": 32
+    },
+    {
+      "name": "n1024_k32",
+      "family": "gaussian",
+      "n": 1024,
+      "k": 32
+    },
+    {
+      "name": "n4096_k32",
+      "family": "gaussian",
+      "n": 4096,
+      "k": 32
+    },
+    {
+      "name": "n4096_k64",
+      "family": "gaussian",
+      "n": 4096,
+      "k": 64
+    }
+  ],
+  "seeds": [
+    20261021,
+    20261022,
+    20261023
+  ],
+  "repeats": 6,
+  "warmup": 3,
+  "methods": [
+    "dual",
+    "rgd",
+    "rtr"
+  ],
+  "options": {
+    "max_iter": 1000,
+    "grad_tol": 1e-09,
+    "feas_tol": 1e-08,
+    "max_backtracks": 40,
+    "cg_max_iter": 100,
+    "cg_rtol": 0.1,
+    "time_limit": 60.0,
+    "history": false
+  },
+  "timing": "CPU input to CPU output; synchronized wall; initialization included",
+  "excluded": [
+    "input generation",
+    "compilation",
+    "warmup",
+    "validation",
+    "output release"
+  ],
+  "batch_baselines": "sequential per-target GPU calls; dual uses native batch",
+  "thresholds": {
+    "feasibility": 1e-08,
+    "stationarity": 1e-09,
+    "global_relative_accuracy": 1e-08
+  },
+  "global_accuracy": "known optimum absolute relative objective error; otherwise independently recomputed positive-definite complex dual difference; strict-gap case unknown",
+  "environment": {
+    "executable": "D:\\anaconda3\\envs\\SymplecticOrderReduction\\python.exe",
+    "python": "3.11.14 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 18:30:03) [MSC v.1929 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "torch": "2.14.1+cu126",
+    "numpy": "2.0.1",
+    "cupy": "13.6.0",
+    "pytorch_cuda": "12.6",
+    "cuda_runtime": 12090,
+    "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "sm_count": 30,
+    "memory_bytes": 6441926656,
+    "nvidia_smi": "NVIDIA GeForce RTX 3060 Laptop GPU, 592.82, 6144 MiB",
+    "cpu_threads": 1,
+    "commit": "393d129e9fa0f7095527e59464d39848fa4a425d",
+    "source_sha256": {
+      "src/symplectic_projection/__init__.py": "22a2e26cc5d61cab91c991cff27d18ca941efa02bdbed23bfee262686b19037f",
+      "src/symplectic_projection/baselines/__init__.py": "1a98251b735b543151d5d5f850be011a4107892c03d7b1ec27cecc63cffc0ef8",
+      "src/symplectic_projection/baselines/common.py": "2a1ed5800df4a9f0886ed6daba2ae4b064ad17811aedcf6187f040636344a642",
+      "src/symplectic_projection/baselines/geometry.py": "ea4db892481e5afa7a91b078de34b70b8bae326b1df08476084e1c7294a71da4",
+      "src/symplectic_projection/baselines/riemannian.py": "515d3ff08d0f673bfd9efacedaf7fe3925585ebd5366a18ae1083a129a790cf5",
+      "src/symplectic_projection/cholesky_inverse_kernel.py": "17a0e9b20bafc4dfe35321bd10a83205deb82309a1388792fc829d027649643b",
+      "src/symplectic_projection/cuda_kernels.py": "05f08eb80e67d95cfbc4c1a43f348a871e255bdf3175d534ca8b6dae99bff682",
+      "src/symplectic_projection/dual_recommended_hvp.py": "3fcd2b1cfb1c3254945c2c1ea8c9740cc612d3b8bbe8236dab9d6dcca6c0614e",
+      "src/symplectic_projection/gram_triangle_reflect.py": "755154008add1dcefc4fd6164fe71ae5493d232d93de48979bcc1c10772d6b21",
+      "src/symplectic_projection/hvp_fused.py": "20d3f80f680d444d9c4be727e2f8ea7b982dcf5e13691882401612ce82197acd",
+      "src/symplectic_projection/recovery_fused.py": "443891db84ab553fe35ec1f9b47ecba810aae49eacc22d517f1b761f7b099b84",
+      "src/symplectic_projection/gram_triangle_reflect.cu": "0779f78b2189d61740368eba1088c10ce3320f4be617b1de4c933bdf27a67449",
+      "src/symplectic_projection/hvp_fused.cu": "1a396825741c0931137d86c0d66384dc74942f03dfe07aa4fc7cd41fe12a006b",
+      "src/symplectic_projection/recovery_fused.cu": "123e216e4e69989d1b44778ed8894137b15780a02f620a484fe9dc0cc03e2bd6",
+      "benchmarks/paper_cases.py": "fa32bd9c8c6561c7ce156d6b02411f9315b90932e27a9a58dedcfd34194cd3d2",
+      "benchmarks/run_benchmark.py": "d4bd004e61858c8d067a39112aff16e4afad4ee5c413419ce2d4ff73cda0987e",
+      "benchmarks/run_paper.py": "56c716a91499df8ebe88ba34fe0ac04278b5bd12d8ca8c40d494178298b089e8"
+    }
+  }
+}

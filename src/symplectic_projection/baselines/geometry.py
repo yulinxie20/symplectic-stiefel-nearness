@@ -54,33 +54,3 @@ def orthosymplectic_initial(target: torch.Tensor) -> torch.Tensor:
     q = q @ (u @ vh)
     return torch.cat((torch.cat((q.real, -q.imag), dim=1),
                       torch.cat((q.imag, q.real), dim=1)), dim=0).contiguous()
-
-
-@dataclass
-class CayleyRetraction:
-    """Gao Cayley 的 2k 阶等价式；普通回缩不声称欧氏二阶性质。"""
-
-    x: torch.Tensor
-    z: torch.Tensor
-    k_matrix: torch.Tensor
-    c_matrix: torch.Tensor
-    xc: torch.Tensor
-    identity: torch.Tensor
-
-    def increment(self, step: float = 1.0) -> torch.Tensor:
-        denominator = self.identity - (0.5 * step) * self.k_matrix + (0.25 * step**2) * self.c_matrix
-        rhs = step * (self.z - (0.5 * step) * self.xc)
-        # 返回解析增量，避免 trial-X 在接近驻点时的消去误差。
-        return torch.linalg.solve(denominator.mT, rhs.mT).mT
-
-    def __call__(self, step: float = 1.0) -> torch.Tensor:
-        return self.x + self.increment(step)
-
-
-def prepare_cayley(x: torch.Tensor, tangent: torch.Tensor) -> CayleyRetraction:
-    """只解 2k 阶系统，不构造 2n 阶 Hamiltonian 提升矩阵。"""
-    k_matrix = -left_j(x.mT @ left_j(tangent))
-    horizontal = tangent - x @ k_matrix
-    c_matrix = -left_j(horizontal.mT @ left_j(horizontal))
-    return CayleyRetraction(x, tangent, k_matrix, c_matrix, x @ c_matrix,
-                            torch.eye(x.shape[1], dtype=x.dtype, device=x.device))

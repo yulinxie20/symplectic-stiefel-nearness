@@ -1,5 +1,7 @@
-"""常欧氏度量下的双精度黎曼 ABB 与 RTR 基线。"""
+"""论文采用的 Gao 非单调 RSD 与 Jensen--Zimmermann R-TR2 基线。"""
 from .common import SolveResult, SolverOptions
-from .riemannian import solve_riemannian
+from .gao_nonmonotone import solve_gao_nonmonotone
+from .jensen_trustregions import JensenTrustRegionOptions, solve_jensen_trustregions
 
-__all__ = ["SolveResult", "SolverOptions", "solve_riemannian"]
+__all__ = ["SolveResult", "SolverOptions", "JensenTrustRegionOptions",
+           "solve_gao_nonmonotone", "solve_jensen_trustregions"]

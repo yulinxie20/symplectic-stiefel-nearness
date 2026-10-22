@@ -230,7 +230,10 @@ def recover_matmul(T, omega, L, blocks=None, final=None):
 
 @torch.no_grad()
 def solve(T):
-    """已有 CPU float64 输入 -> CPU 的 (X, omega, Newton 更新次数)。"""
+    """已有 CPU float64 输入 -> CPU 的 (X, omega, Newton 更新次数)。
+
+    调用前须在当前进程运行 initialize_kernels()。
+    """
     blocks, final = [], []
     Cr, Ci = gram_chunks(T, blocks)
     omega, L, iterations = dual_batch(Cr, Ci, final)

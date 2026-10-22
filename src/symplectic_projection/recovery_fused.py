@@ -1,31 +1,19 @@
-"""CuPy 编译恢复核，零复制使用 PyTorch 张量并在其当前 CUDA 流启动。"""
-import ctypes as ct
-from functools import lru_cache
+"""CuPy 编译恢复核，零复制使用 PyTorch 张量并在默认流启动。"""
 from pathlib import Path
 import numpy as np
 import torch
 from .cuda_kernels import compile_source, launch
 
 
-def bind(library, name, arguments):
-    """保留历史实验的 ctypes 绑定接口；当前恢复核使用 CuPy。"""
-    function = getattr(library, name)
-    function.argtypes, function.restype = arguments, ct.c_int
-    return function
+_module = None  # 保留 RawModule，供已保存的核句柄复用。
+_kernels = {}
 
 
-def check(code):
-    if code:
-        raise RuntimeError(f"CUDA/NVRTC 调用失败，错误码 {code}")
-
-
-@lru_cache(maxsize=1)
-def compile_kernel():
-    """每进程一次；保留 (module, kernel, launch, timing) 返回结构。"""
-    module, kernels, launcher, timing = compile_source(
+def initialize_kernels():
+    global _module, _kernels
+    _module, _kernels = compile_source(
         Path(__file__).with_suffix(".cu").read_text(encoding="utf-8"),
         {"recover": "recover_fused"})
-    return module, kernels["recover"], launcher, timing
 
 
 def recover_block(A, D, P, Q):
@@ -35,9 +23,8 @@ def recover_block(A, D, P, Q):
     assert D.shape == A.shape and A.is_contiguous() and D.is_contiguous()
     assert P.shape == Q.shape == (batch, m, m)
     Ur, Ui = torch.empty_like(A), torch.empty_like(A)
-    _, kernel, _, _ = compile_kernel()
     scalars = (np.int32(rows), np.int32(m))
     scalars += tuple(np.int64(s) for x in (P, Q) for s in x.stride())
-    launch(kernel, ((m+15)//16, (rows+15)//16, batch), (16, 16, 1),
+    launch(_kernels["recover"], ((m+15)//16, (rows+15)//16, batch), (16, 16, 1),
            (A, D, P, Q, Ur, Ui), scalars)
     return Ur, Ui

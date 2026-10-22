@@ -14,19 +14,14 @@ class SolverOptions:
     max_iter: int = 300
     grad_tol: float = 1e-8
     feas_tol: float = 1e-8
-    max_backtracks: int = 40
-    cg_max_iter: int = 100
-    cg_rtol: float = 0.1
     time_limit: float = 120.0
     history: bool = True
 
     def __post_init__(self) -> None:
-        if self.max_iter < 0 or self.max_backtracks < 1 or self.cg_max_iter < 1:
+        if self.max_iter < 0:
             raise ValueError("迭代预算无效")
         if not all(math.isfinite(x) and x > 0 for x in (self.grad_tol, self.feas_tol, self.time_limit)):
             raise ValueError("容差与时间预算必须有限且为正")
-        if not 0 < self.cg_rtol < 1:
-            raise ValueError("cg_rtol 必须在 (0,1) 中")
 
 
 @dataclass
@@ -70,6 +65,11 @@ def sym(x: torch.Tensor) -> torch.Tensor:
 
 def inner(a: torch.Tensor, b: torch.Tensor) -> torch.Tensor:
     return torch.sum((a.conj() * b).real)
+
+
+def objective_increment(residual: torch.Tensor, delta: torch.Tensor) -> float:
+    """精确二次式的目标差，避免直接相减两个几乎相等的大目标值。"""
+    return float(2 * inner(residual, delta) + inner(delta, delta))
 
 
 def synchronize(device) -> None:

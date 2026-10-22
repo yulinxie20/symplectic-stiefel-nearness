@@ -1,18 +1,22 @@
-"""HVP、线搜索及预条件/CG 的 FP64 融合核；CuPy 编译，在 PyTorch 当前流启动。"""
-from functools import lru_cache
+"""HVP、线搜索及预条件/CG 的 FP64 融合核；在默认流上启动。"""
 from pathlib import Path
 import numpy as np
 import torch
-from .cuda_kernels import compile_source
+from .cuda_kernels import compile_source, launch
 
 
-@lru_cache(maxsize=1)
-def compile_kernel():
-    """每进程编译一次；基准前调用以排除编译和模块加载时间。"""
+_module = None  # 保留 RawModule，供已保存的核句柄复用。
+_kernels = {}
+
+
+def initialize_kernels():
+    """实验前一次编译整组融合核并保存句柄。"""
+    global _module, _kernels
     names = ("inner", "outer", "sandwich_front", "outer_off16", "outer_diag16",
              "line_partial", "line_finish", "precondition", "cg_update", "cg_next")
-    return compile_source(Path(__file__).with_suffix(".cu").read_text(encoding="utf-8"),
-                          {name: "hvp_" + name for name in names})
+    _module, _kernels = compile_source(
+        Path(__file__).with_suffix(".cu").read_text(encoding="utf-8"),
+        {name: "hvp_" + name for name in names})
 
 
 def inner_products(E, Sr, Si):
@@ -23,11 +27,10 @@ def inner_products(E, Sr, Si):
                for x in (E, Sr, Si))
     U = torch.empty(E.shape, dtype=E.dtype, device=E.device)
     V = torch.empty_like(U)
-    _, kernels, launch, _ = compile_kernel()
     scalars = [np.int32(m)]
     scalars += [np.int64(s) for x in (E, Sr, Si) for s in x.stride()]
     tiles = (m + 15) // 16
-    launch(kernels["inner"], (tiles, tiles, batch), (16, 16, 1), (E, Sr, Si, U, V), scalars)
+    launch(_kernels["inner"], (tiles, tiles, batch), (16, 16, 1), (E, Sr, Si, U, V), scalars)
     return U, V
 
 
@@ -38,16 +41,15 @@ def outer_skew(P, Q, U, V):
     assert all(x.is_cuda and x.dtype == torch.float64 and x.device == P.device
                for x in (P, Q, U, V))
     H = torch.empty(P.shape, dtype=P.dtype, device=P.device)
-    _, kernels, launch, _ = compile_kernel()
     tensors = (P, Q, U, V, H)
     if m == 128 and all(x.is_contiguous() for x in (P, Q, U, V)):
-        launch(kernels["outer_off16"], (28, 1, batch), (16, 16, 1), tensors)
-        launch(kernels["outer_diag16"], (8, 1, batch), (128, 1, 1), tensors)
+        launch(_kernels["outer_off16"], (28, 1, batch), (16, 16, 1), tensors)
+        launch(_kernels["outer_diag16"], (8, 1, batch), (128, 1, 1), tensors)
         return H
     scalars = [np.int32(m)]
     scalars += [np.int64(s) for x in (P, Q, U, V) for s in x.stride()]
     tiles = (m + 15) // 16
-    launch(kernels["outer"], (tiles*(tiles+1)//2, 1, batch), (16, 16, 1), tensors, scalars)
+    launch(_kernels["outer"], (tiles*(tiles+1)//2, 1, batch), (16, 16, 1), tensors, scalars)
     return H
 
 
@@ -59,11 +61,10 @@ def sandwich_front(values, Ci, P, Q):
                for x in (values, Ci, P, Q))
     Yr = torch.empty(P.shape, dtype=P.dtype, device=P.device)
     Yi = torch.empty_like(Yr)
-    _, kernels, launch, _ = compile_kernel()
     scalars = [np.int32(m)]
     scalars += [np.int64(s) for x in (values, Ci, P, Q) for s in x.stride()]
     tiles = (m + 15) // 16
-    launch(kernels["sandwich_front"], (tiles, tiles, batch), (16, 16, 1),
+    launch(_kernels["sandwich_front"], (tiles, tiles, batch), (16, 16, 1),
            (values, Ci, P, Q, Yr, Yi), scalars)
     return Yr, Yi
 
@@ -78,11 +79,10 @@ def line_change(gradient, delta, V, delta_Sr, trial, delta_Si):
     tiles = (m + 15) // 16
     partial = torch.empty((batch, 2, tiles * tiles), dtype=V.dtype, device=V.device)
     output = torch.empty((batch,), dtype=V.dtype, device=V.device)
-    _, kernels, launch, _ = compile_kernel()
     scalars = [np.int32(m)]
     scalars += [np.int64(stride) for x in inputs for stride in x.stride()]
-    launch(kernels["line_partial"], (tiles, tiles, batch), (16, 16, 1), inputs + (partial,), scalars)
-    launch(kernels["line_finish"], (batch, 1, 1), (256, 1, 1),
+    launch(_kernels["line_partial"], (tiles, tiles, batch), (16, 16, 1), inputs + (partial,), scalars)
+    launch(_kernels["line_finish"], (batch, 1, 1), (256, 1, 1),
            (partial, output), (np.int32(tiles * tiles),))
     return output
 
@@ -104,8 +104,7 @@ def _check_batch_vector(vector, matrix, dtype):
 
 def _launch_vector(name, reference, tensors, scalars):
     batch, m, _ = reference.shape
-    _, kernels, launch, _ = compile_kernel()
-    launch(kernels[name], ((m*m + 255)//256, batch, 1), (256, 1, 1), tensors, scalars)
+    launch(_kernels[name], ((m*m + 255)//256, batch, 1), (256, 1, 1), tensors, scalars)
 
 
 def fused_precondition(R, denominator):
